@@ -23,11 +23,6 @@ Dentro do PostgreSQL:
 \i database.sql
 ```
 
-Se der erro de caminho, tente:
-```sql
-\i 'C:/Users/nicol/Documents/Workspace/SENAI/Desenvolvimento de Sistemas/Daniel/ProjetoTeste/gerenciamentoTerefasFinal-3/database.sql'
-```
-
 ### 1.3 Verificar banco criado
 ```sql
 \l                          -- Lista bancos
@@ -47,8 +42,6 @@ Se der erro de caminho, tente:
 ## Passo 2: Instalar Dependências
 
 ```bash
-cd C:\Users\nicol\Documents\Workspace\SENAI\Desenvolvimento de Sistemas\Daniel\ProjetoTeste\gerenciamentoTerefasFinal-3
-
 npm install
 ```
 
@@ -63,8 +56,8 @@ DB_ADAPTOR=postgres
 DB_HOST=localhost
 DB_PORT=5432
 DB_USER=postgres
-DB_PASSWD=senai
-DB_DATABASE=gerenciamento_tarefas
+DB_PASSWD=
+DB_DATABASE=
 NODE_ENV=development
 PORT=3000
 ```
