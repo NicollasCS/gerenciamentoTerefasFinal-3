@@ -1,0 +1,237 @@
+{
+  "info": {
+    "name": "API Gerenciamento de Tarefas",
+    "description": "Coleção de testes da API REST de Gerenciamento de Tarefas",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Autenticação",
+      "item": [
+        {
+          "name": "Registrar Usuário",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://localhost:3000/register",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["register"]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"João Silva\",\n  \"email\": \"joao@test.com\",\n  \"senha\": \"senha123\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Fazer Login",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://localhost:3000/authenticate",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["authenticate"]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"joao@test.com\",\n  \"senha\": \"senha123\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tarefas",
+      "item": [
+        {
+          "name": "Listar Todas as Tarefas",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3000/auth/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["auth", ""]
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{ token }}"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Buscar Tarefa por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3000/auth/tarefa/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["auth", "tarefa", "1"]
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{ token }}"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Criar Tarefa",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://localhost:3000/auth/tarefa",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["auth", "tarefa"]
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{ token }}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Implementar feature\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Atualizar Nome da Tarefa",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "http://localhost:3000/auth/tarefa/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["auth", "tarefa", "1"]
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{ token }}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Implementar feature atualizado\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Atualizar Status - EM_DESENVOLVIMENTO",
+          "request": {
+            "method": "PATCH",
+            "url": {
+              "raw": "http://localhost:3000/auth/tarefa/1/status",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["auth", "tarefa", "1", "status"]
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{ token }}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"em_desenvolvimento\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Atualizar Status - CONCLUIDO",
+          "request": {
+            "method": "PATCH",
+            "url": {
+              "raw": "http://localhost:3000/auth/tarefa/1/status",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["auth", "tarefa", "1", "status"]
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{ token }}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"concluido\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Deletar Tarefa",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://localhost:3000/auth/tarefa/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["auth", "tarefa", "1"]
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{ token }}"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "token",
+      "value": "seu_token_aqui",
+      "type": "string"
+    }
+  ]
+}
